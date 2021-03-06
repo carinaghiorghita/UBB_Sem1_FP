@@ -1,0 +1,45 @@
+class ComplexNumber:
+    def __init__(self,Re,Im):
+        self._re=Re
+        self._im=Im
+
+    @property
+    def Re(self):
+        return self._re
+
+    @Re.setter
+    def Re(self, value):
+        self._re=value
+
+    @property
+    def Im(self):
+        return self._im
+
+    @Im.setter
+    def Im(self, value):
+        self._im=value
+
+    def __str__(self):
+        if self.Im>0:
+            return str(self.Re)+'+'+str(self.Im)+'i'
+        elif self.Im==0:
+            return str(self.Re)
+        else:
+            return str(self.Re)+str(self.Im) + 'i'
+
+def testComplex():
+    n=ComplexNumber(-2,4)
+    assert n.Re==-2 and n.Im==4
+    assert str(n)=='-2+4i'
+    n = ComplexNumber(-2, 0)
+    assert n.Re == -2 and n.Im == 0
+    assert str(n) == '-2'
+    n = ComplexNumber(-2, -4)
+    assert n.Re == -2 and n.Im == -4
+    assert str(n) == '-2-4i'
+    n.Re=3
+    assert n.Re==3
+    n.Re+=2
+    assert n.Re==5
+
+testComplex()

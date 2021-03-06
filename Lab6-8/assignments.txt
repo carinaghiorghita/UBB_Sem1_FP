@@ -1,0 +1,6 @@
+
+100,Assignment 1,10
+101,Assignment 2,7
+102,Assignment 3,13
+103,Assignment 4,9
+104,Assignment 5,47

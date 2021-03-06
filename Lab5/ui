@@ -1,0 +1,50 @@
+from domain import *
+from service import *
+
+class UI:
+    def __init__(self,service):
+        self._service=service
+
+    def addNumber(self):
+        Re=input("Re=")
+        Im=input("Im=")
+        number=ComplexNumber(Re,Im)
+        self._service.addNumber(number)
+
+    def showNumbers(self):
+        for n in self._service:
+            print(n)
+
+    def filterNumbers(self):
+        p1=input("p1=")
+        p2=input("p2=")
+        self._service.filterNumbers(p1,p2)
+
+    def undo(self):
+        self._service.undo()
+
+    def _printMenu(self):
+        print("Choose an option:")
+        print("1.Add a number")
+        print("2.Show the list of numbers")
+        print("3.Filter list")
+        print("4.Undo")
+        print("5.Exit")
+
+    def start(self):
+        self._commands = {'1':self.addNumber,'2':self.showNumbers,'3':self.filterNumbers, '4':self.undo}
+        while True:
+            self._printMenu()
+            opt=input("Your option:")
+            if (opt=='5'):
+                return
+            if m not in self._commands:
+                print("Bad command")
+            try:
+                self._commands[opt]()
+            except ValueError as ve:
+                print("error - " + str(ve))
+
+s=Service()
+u=UI(s)
+ui.start()

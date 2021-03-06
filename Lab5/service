@@ -1,0 +1,28 @@
+from domain import *
+
+class Service:
+    def __init__(self):
+        self._numbers=[]
+        self._history = []
+
+    def addNumber(self,number):
+        import copy
+        copyList = []
+        copyList = copy.deepcopy(self._numbers)
+        self._numbers.append(number)
+        self._history.append(copyList[:])
+
+    def filterNumbers(self,p1,p2):
+        import copy
+        copyList = []
+        copyList = copy.deepcopy(self._numbers)
+        listNr2=[]
+        for n in range(p1,p2):
+            listNr2.append(self._numbers[n])
+        self._numbers=copy.deepcopy(listNr2)
+        self._history.append(copyList[:])
+
+    def undo(self):
+        if len(self._history) == 0:
+            raise ValueError('No more undo steps!')
+        self._total = self._history.pop()
